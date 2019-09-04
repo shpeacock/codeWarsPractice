@@ -1,19 +1,17 @@
 function nextVersion(version){
   //TODO : find the next version
-    let arr = version.split(".").map(el => parseInt(el));
-    for(var i = arr.length-1; i >=0; i--){
-        if(arr[i] + 1 == 10 && i != 0){
-          arr[i] = 0;
-        }
-        else if(arr[i] ==0 && arr.length >1 && i !=0) {
-            continue;
-        }
-        else {
-          arr[i]++;
-          break;
-        }
+  const parts = version.split(".")
+
+  for (let i = parts.length - 1; i >= 0; i--) {
+    if (i > 0 && parts[i] === "9") {
+      parts[i] = 0
+    } else {
+      parts[i]++
+      break
     }
-    return arr.join(".");
+  }
+  
+  return parts.join(".")
 }
 
 
